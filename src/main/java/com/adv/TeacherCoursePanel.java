@@ -56,6 +56,7 @@ public class TeacherCoursePanel extends CommonJPanel implements ActionListener {
         JScrollPane scrollPane = new JScrollPane(contentPanel);
         scrollPane.setBorder(BorderFactory.createEmptyBorder());
         scrollPane.getViewport().setBorder(null);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
         add(scrollPane, BorderLayout.CENTER);
 
         // --- Zurück-Button ---
@@ -79,7 +80,7 @@ public class TeacherCoursePanel extends CommonJPanel implements ActionListener {
         Course course = courseDataAccess.findCourseById(courseId);
 
         // --- Kopfzeile ---
-        JLabel courseNameLabel = new JLabel(course.getNAME());
+        JLabel courseNameLabel = new JLabel(course.getName());
         courseNameLabel.setFont(new Font("Segoe UI", Font.BOLD, 30));
         courseNameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         contentPanel.add(courseNameLabel);

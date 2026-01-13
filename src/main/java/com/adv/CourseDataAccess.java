@@ -28,7 +28,7 @@ public class CourseDataAccess {
 
         try(Connection conn = db.connect();
         PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
-            preparedStatement.setString(1, course.getNAME());
+            preparedStatement.setString(1, course.getName());
             preparedStatement.setString(2, course.getTeacherId());
             preparedStatement.setString(3, course.getDescription());
 

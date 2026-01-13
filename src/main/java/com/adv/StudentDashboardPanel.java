@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Das Dashboard-Panel fuer Studenten.
@@ -40,7 +41,7 @@ public class StudentDashboardPanel extends CommonJPanel implements ActionListene
         this.courseDataAccess = new CourseDataAccess();
 
         setLayout(new BorderLayout(0, 50));
-        setBorder(new EmptyBorder(10, 0, 10, 0));
+        setBorder(new EmptyBorder(20, 80, 20, 20));
 
         // --- Wilkommensnachricht ---
         JPanel topPanel = new JPanel(new GridBagLayout());
@@ -64,11 +65,14 @@ public class StudentDashboardPanel extends CommonJPanel implements ActionListene
 
         // --- Panel für Kurse --
         coursesPanel = new JPanel();
-        coursesPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
+
         // coursesPanel in ein ScrollPane, damit scrollen geht
         JScrollPane scrollPane = new JScrollPane(coursesPanel);
         scrollPane.setBorder(BorderFactory.createEmptyBorder());
         scrollPane.getViewport().setBorder(null); // Default-Border entfernen
+        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
+
         add(scrollPane, BorderLayout.CENTER);
     }
 
@@ -99,18 +103,30 @@ public class StudentDashboardPanel extends CommonJPanel implements ActionListene
             coursesPanel.add(noCoursesLabel, BorderLayout.CENTER);
 
         } else {
-            coursesPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
+            coursesPanel.setLayout(new BoxLayout(coursesPanel, BoxLayout.Y_AXIS));
+
+            // Ermitteln der benötigten Reihen für die Kurskacheln
+            int rows = (int) Math.ceil(courses.size() / 3.0); // 3.0, damit ein Float entsteht (braucht die Methode)
+
+            // Array von Panels, wo die KursButtons reinkommen
+            JPanel[] rowsPanels = new JPanel[rows];
+
+            //Initialiseren des Arrays
+            for (int i = 0; i < rows; i++) {
+                rowsPanels[i] = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
+                rowsPanels[i].setMaximumSize(new Dimension(Integer.MAX_VALUE, 170));
+                coursesPanel.add(rowsPanels[i]);
+            }
+
             // Ein Button für jeden Kurs, um damit auf die KursPanels zu kommen
-            for (Course course : courses) {
-                JButton courseButton = new JButton("<html><center>" + course.getNAME() + "</center></html>");
-                courseButton.setActionCommand(course.getId());
+            for (int i = 0; i < courses.size(); i++) {
+                JButton courseButton = new JButton("<html><center>" + courses.get(i).getName() + "</center></html>");
+                courseButton.setActionCommand(courses.get(i).getId());
                 courseButton.addActionListener(this);
                 courseButton.setPreferredSize(new Dimension(200, 150));
 
-                JPanel buttonWrapper = new JPanel(new FlowLayout(FlowLayout.CENTER));
-                buttonWrapper.add(courseButton);
-
-                coursesPanel.add(buttonWrapper);
+                // 3 Kacheln in einer Reihe
+                rowsPanels[i / 3].add(courseButton);
             }
         }
 
@@ -140,5 +156,4 @@ public class StudentDashboardPanel extends CommonJPanel implements ActionListene
         mainApp.getStudentCoursePanel().loadCourseData(student, courseId);
         mainApp.showPanel(App.STUDENT_COURSE_PANEL);
     }
-
 }

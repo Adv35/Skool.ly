@@ -131,7 +131,7 @@ public class AdminEnrollmentPanel extends CommonJPanel implements ActionListener
                     return;
                 } // Wenn nicht, dann kann man die Einschreibung machen.
                 else if (enrollmentDataAccess.enrollStudent(enrollment)) {
-                    JOptionPane.showMessageDialog(mainApp, String.format("%s wurde erfolgreich in den Kurs %s eingeschrieben", selectedStudent.getFirstName() + " " + selectedStudent.getLastName(), selectedCourse.getNAME()));
+                    JOptionPane.showMessageDialog(mainApp, String.format("%s wurde erfolgreich in den Kurs %s eingeschrieben", selectedStudent.getFirstName() + " " + selectedStudent.getLastName(), selectedCourse.getName()));
                 } else {
                     JOptionPane.showMessageDialog(mainApp, "Fehler beim Einschreiben des Schülers in den Kurs.", "Fehler", JOptionPane.ERROR_MESSAGE);
                 }

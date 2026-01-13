@@ -54,6 +54,7 @@ public class TeacherGradingPanel extends CommonJPanel implements ActionListener 
         JScrollPane scrollPane = new JScrollPane(contentPanel);
         scrollPane.setBorder(BorderFactory.createEmptyBorder());
         scrollPane.getViewport().setBorder(null);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
         add(scrollPane, BorderLayout.CENTER);
 
         // --- Zurück - Button ---
@@ -86,7 +87,7 @@ public class TeacherGradingPanel extends CommonJPanel implements ActionListener 
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         contentPanel.add(titleLabel);
 
-        JLabel courseLabel = new JLabel("Kurs: " + course.getNAME());
+        JLabel courseLabel = new JLabel("Kurs: " + course.getName());
         courseLabel.setFont(new Font("Segoe UI", Font.PLAIN, 18));
         courseLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         contentPanel.add(courseLabel);

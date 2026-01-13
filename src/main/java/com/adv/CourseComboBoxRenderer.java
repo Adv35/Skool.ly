@@ -18,7 +18,7 @@ public class CourseComboBoxRenderer extends DefaultListCellRenderer {
         // Hier wird geprüft, ob es sich beim ausgewählten Objekt auch um ein Course-Objekt handelt.
         if (value instanceof Course) {
             // Default: label.setText(value.toString());
-            label.setText(((Course) value).getNAME());
+            label.setText(((Course) value).getName());
         }
         // JLabel erbt von Component
         return label;

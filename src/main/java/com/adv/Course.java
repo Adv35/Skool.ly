@@ -34,7 +34,7 @@ public class Course {
     /** Getter-Methode.
      * @return Gibt den Namen des Kurses zurueck.
      * **/
-    public String getNAME() {
+    public String getName() {
         return NAME;
     }
 

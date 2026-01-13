@@ -7,6 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER;
+
 /**
  * Dashboard-Panel fuer Lehrkraefte.
  * Hauptansicht nach dem Login eines Lehrers.
@@ -31,7 +33,7 @@ public class TeacherDashboardPanel extends CommonJPanel implements ActionListene
         this.courseDataAccess = new CourseDataAccess();
 
         setLayout(new BorderLayout(0, 50));
-        setBorder(new EmptyBorder(20, 20, 20, 20));
+        setBorder(new EmptyBorder(20, 80, 20, 20));
 
         //--- Kopfzeile ---
         welcomeLabel = new JLabel("Willkommen!", SwingConstants.CENTER);
@@ -45,6 +47,8 @@ public class TeacherDashboardPanel extends CommonJPanel implements ActionListene
         JScrollPane scrollPane = new JScrollPane(coursesPanel);
         scrollPane.setBorder(BorderFactory.createEmptyBorder());
         scrollPane.getViewport().setBorder(null);
+        scrollPane.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
         add(scrollPane, BorderLayout.CENTER);
     }
 
@@ -64,23 +68,37 @@ public class TeacherDashboardPanel extends CommonJPanel implements ActionListene
 
         if (courses.isEmpty()) {
             // Label dass sagt, dass es keine Kurse gibt
-            JLabel noCoursesLabel = new JLabel("Keine Kurse zugewiesen.");
-            noCoursesLabel.setFont(new Font("Segoe UI", Font.ITALIC, 16));
-            coursesPanel.add(noCoursesLabel);
+            coursesPanel.setLayout(new BorderLayout());
+            JLabel noCoursesLabel = new JLabel("Keine Kurse zugewiesen.", SwingConstants.CENTER);
+            noCoursesLabel.setFont(new Font("Segoe UI", Font.ITALIC, 18));
+            coursesPanel.add(noCoursesLabel, BorderLayout.CENTER);
+
         } else {
+            coursesPanel.setLayout(new BoxLayout(coursesPanel, BoxLayout.Y_AXIS));
+
+            // Ermitteln der benötigten Reihen für die Kurskacheln
+            int rows = (int) Math.ceil(courses.size() / 3.0); // 3.0, damit ein Float entsteht (braucht die Methode)
+
+            // Array von Panels, wo die KursButtons reinkommen
+            JPanel[] rowsPanels = new JPanel[rows];
+
+            //Initialiseren des Arrays
+            for (int i = 0; i < rows; i++) {
+                rowsPanels[i] = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
+                rowsPanels[i].setMaximumSize(new Dimension(Integer.MAX_VALUE, 170));
+                coursesPanel.add(rowsPanels[i]);
+            }
+
             // Für jeden Kurs des Lehrers einen Button erstellen
-            for (Course course : courses) {
-                JButton courseButton = new JButton("<html><center>" + course.getNAME() + "</center></html>");
+            for (int i = 0; i < courses.size(); i++) {
+                JButton courseButton = new JButton("<html><center>" + courses.get(i).getName() + "</center></html>");
                 courseButton.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-                courseButton.setActionCommand(course.getId());
+                courseButton.setActionCommand(courses.get(i).getId());
                 courseButton.addActionListener(this);
                 courseButton.setPreferredSize(new Dimension(200, 150));
 
-                JPanel buttonWrapper = new JPanel(new FlowLayout(FlowLayout.CENTER));
-                buttonWrapper.add(courseButton);
-
-                coursesPanel.add(buttonWrapper);
-
+                // 3 Kacheln in einer Reihe
+                rowsPanels[i / 3].add(courseButton);
             }
         }
         coursesPanel.revalidate();
