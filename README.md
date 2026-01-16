@@ -40,11 +40,11 @@ Skool.ly bietet eine Vielzahl an Features, welches folgend alle aufgelistet werd
         
 - **Kursverwaltung:**
   - Erstellen neuer Kurse mit Name und Beschreibung.
-    - Direkte Zuweisung eines Lehrers zum Kurs.
+  - Direkte Zuweisung eines Lehrers zum Kurs.
         
 - **Einschreibung eines Schülers:**
   - Einschreiben von Schülern in existierende Kurse.
-    - Prüfung auf bereits bestehende Einschreibungen, um Datenbank-Fehler vorzeitig zu vermeiden.
+  - Prüfung auf bereits bestehende Einschreibungen, um Datenbank-Fehler vorzeitig zu vermeiden.
         
 - **Passwort-Reset:** Zurücksetzen von Passwörtern für andere Benutzer (Schutzmechanismus: Admins können ihr eigenes Passwort hier nicht ändern, um mehr Sicherheit zu gewährleisten).
 
