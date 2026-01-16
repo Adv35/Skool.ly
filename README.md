@@ -24,7 +24,7 @@ Skool.ly bietet eine Vielzahl an Features, welches folgend alle aufgelistet werd
   - **Management von Gewichtungen:**
     - Erstellen und Bearbeiten von Gewichtungen für verschiedene Notentypen (Schriftlich, Mündlich, Fachpraktisch, Test).
     - Löschen von Notentypen (inkl. Sicherheitswarnung, falls zu dem Typ bereits Noten existieren).
-
+      
   - **Schülerliste:** Übersicht aller im Kurs eingeschriebenen Schüler mit ihren Namen.
   - **Kursdurchschnitt:** Anzeige des insegsamten Notendurchschnitts aller Schüler im gesamten Kurs.
 
@@ -87,4 +87,16 @@ Folgend wird die Struktur des Projekts mithilfe eines UML-Diagramms veranschauli
 ![alt text](https://github.com/Adv35/Skool.ly/blob/master/umlCoreFunctions2.jpg?raw=true)
 
 
+# Wahl der Programmiersprache & Projektzeitraum
+- Die Programmiersprache Java wurde einerseits wegen der Anforderung, aber auch wegen der Objektorientierung gewählt. 
+- Der Zeitraum für das Projekt erstreckt sich von ca. Anfang September bis Mitte Januar, also circa 5 Monate, wobei manchmal Pausen aufgrund von Klausuren eingelegt wurden.
 
+
+# Eigenreflektion
+## Komplexe Situationen / Schwierigkeiten
+- Schwierigkeiten hatte ich auf jeden Fall bei der Laufzeit bzw. dabei, die App flüssig zum laufen zu bringen, da eine große Verzögerung zwischen Datenbank und Applikation vorhanden war. Ich versuchte daher erstmal SQL-Anfragen durch JOINs und LEFT JOINs zu minimieren, was etwas geholfen hatte, aber trotzdem nicht gereicht hatte. Später kam ich auf die Idee, Connection-Pooling zu verwenden, was sich als die perfekte Lösung für mein Problem darstellte.
+- Auch die Notenberechnung hatte mir ein Paar Kopfschmerzen bereitet. Da Standardisierungen vorher nicht getroffen wurden (wie z.B. was passieren soll wenn jemand keine Noten hat bzw. wenn ein Gewicht keine Noten eingetragen hat), habe ich eigene Regeln entworfen, die in meinem Szenario nach meinem Gewissen am sinnvollsten erscheinten.
+- Weiterhin war auch die UI/UX eine Herausforderung, da ich von Java Swing kaum Erfahrung hatte. Glücklicherweise habe ich mich mit YouTube-Videos, Stackoverflow und der Hilfe von Freunden gut orientieren können.
+
+## Zeitmanagement
+Ich hatte viel Zeit zur Verfügung und habe diese mal effizienter, mal ineffizienter genutzt. Insgesamt habe ich gelernt, früh ein Dashboard/Plan zu machen, bis wann man was fertig zu haben hat, da ich v.a. in September sehr entspannt an die Sache ranging und im Dezember panisch agiert habe. Ich hätte mir die Zeit also besser einteilen können, aber letztendlich habe ich das Projekt so geschafft, dass es meinen Erwartungen entsprochen hat.
