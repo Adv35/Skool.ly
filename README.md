@@ -67,6 +67,7 @@ Skool.ly bietet eine Vielzahl an Features, welches folgend alle aufgelistet werd
     neues Gewicht = altes Gewicht / Summe aller verbleibenden Gewichte
     ```
   - **Keine fest definierte Notenskala:** Es wird keine fest definierte Notenskala verwendet. Jedoch müssen Zahlen als Noten verwendet werden, da die Berechnung auf diese Zahlen ausgelegt ist. Amerikanische Noten (A-F) sind nicht möglich.
+  - **Automatische Ausfilterung:** Wenn ein Kurs oder ein Kursteilnehmer keine Noten hat, werden diese nicht in die Durchschnittsberechnung einbezogen.
   
 
        
