@@ -62,14 +62,29 @@ Skool.ly bietet eine Vielzahl an Features, welches folgend alle aufgelistet werd
 ## Logik & Berechnung (Backend)
 - **Notenberechnung (GradeCalc):**
   - **Dynamische Gewichtsanpassung:** Wenn in einem Kurs für einen bestimmten Notentyp (z.B: Mündlich) noch keine Note eingetragen wurde, wird dessen Gewichtung ignoriert und die Anteile der anderen Typen werden proportional angepasst. Folgende Formel gilt für Gewichte, die angepasst werden:
-    
     ```
     neues Gewicht = altes Gewicht / Summe aller verbleibenden Gewichte
     ```
   - **Keine fest definierte Notenskala:** Es wird keine fest definierte Notenskala verwendet. Jedoch müssen Zahlen als Noten verwendet werden, da die Berechnung auf diese Zahlen ausgelegt ist. Amerikanische Noten (A-F) sind nicht möglich.
   - **Automatische Ausfilterung:** Wenn ein Kurs oder ein Kursteilnehmer keine Noten hat, werden diese nicht in die Durchschnittsberechnung einbezogen.
-  
 
-       
+## Sicherheit und Datenbank
+- **Authentifizierung/Login:**
+  - Login-System mit Benutzername und Passwort.
+  - Verwenden des SHA-512 Hashingalgorithmus mit einem zufälligen Salt für gehobene Sicherheit.
+    
+- **Datenbank-Verbindung:**
+    - Einsatz von HikariCP zur effizienten Nutzung der Datenbankverbindungen (hält Verbindungen offen -> neue Verbindungen nicht nötig).
+    - Verhinderung von SQL-Injections mit ```PreparedStatement```.
+
+# Datenbankstruktur
+Folgend wird die Struktur der genutzten Datenbank mithilfe eines Entity-Relationship Diagramms veranschaulicht:
+![alt text](https://github.com/Adv35/Skool.ly/blob/master/ER_Diagramm.png?raw=true)
+
+# Klassenstruktur des Projekts
+Folgend wird die Struktur des Projekts mithilfe eines UML-Diagramms veranschaulicht. Wichtig ist hierbei, dass aufgrund von Verständnis- und Überblicksgründen einige Klassen, darunter auch die Mehrheit der Panels ausgelassen wurde.
+
+![alt text](https://github.com/Adv35/Skool.ly/blob/master/umlCoreFunctions2.jpg?raw=true)
+
 
 
