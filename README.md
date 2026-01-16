@@ -1,11 +1,11 @@
-# 💡 Overview
+# Übersicht
 
 Skool.ly ist eine auf Java gecodete Applikation für das Notenmanagement von Schulen. Es ist ausgestattet mit Admin-, Lehrkraft- und Schüleransichten, und hat eine einfache Bedienung. 
 
-# ✨ Features
+# Features
 Skool.ly bietet eine Vielzahl an Features, welches folgend alle aufgelistet werden:
 
-## 🎓 Für SchülerInnen (Students)
+## Für SchülerInnen (Students)
 - **Dashboard-Übersicht**:
     - Anzeige des **Gesamtdurchschnitts** über alle belegten Kurse hinweg (in Echtzeit berechnet).
     - Boxen-Ansicht aller eingeschriebenen Kurse.
@@ -16,7 +16,7 @@ Skool.ly bietet eine Vielzahl an Features, welches folgend alle aufgelistet werd
     - **Verständlichkeit der Gewichtungen:** Anzeige, wie viel Prozent verschiedene Notentypen (z.B. Mündlich, Schriftlich etc.) zählen.
     - **Notenübersicht:** Detaillierte Ansicht aller erhaltenen Noten in dem Kurs mit Datum, Notenwert (in Punkten) und Beschreibung.
   
-## 👨‍🏫 Für Lehrkräfte (Teachers)
+## Für Lehrkräfte (Teachers)
 - **Lehrer-Dashboard:**
   - Eine Übersicht aller Kurs, die die Lehrkraft unterrichtet.
     
@@ -34,7 +34,7 @@ Skool.ly bietet eine Vielzahl an Features, welches folgend alle aufgelistet werd
   - **Note eintragen:** Hinzufügen einer Note mit Punktwert, Notentyp (Dropdown basierend auf im Kurs bereits definierte Gewichtungen) und Beschreibung.
   - **Notenverwaltung:** Löschen von fehlerhaft eingetragenen Noten einfach gestaltet möglich.
  
- ## 👨‍💻 Für Administratoren (Admins)
+ ## Für Administratoren (Admins)
 - **Benutzerverwaltung:**
   - **Erstellen neuer Benutzer:** Anlegen von Schülern. Lehrkräften und weiteren Admins.
         
