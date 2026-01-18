@@ -126,7 +126,12 @@ public class GradeCalc {
                }
            }
 
-           gradeSum += calculateStudentCourseAvg(courseId, gradeDetailsOfOneStudent);
+           float studentCourseAvg = calculateStudentCourseAvg(courseId, gradeDetailsOfOneStudent);
+           if (Float.isNaN(studentCourseAvg)) {
+               gradeSum += studentCourseAvg;
+           } else {
+               numberOfStudents--;
+           }
 
        }
 
