@@ -102,6 +102,7 @@ public class AdminDashboardPanel extends CommonJPanel implements ActionListener 
         } else if (e.getSource() == createCourseButton) {
             mainApp.showPanel(App.ADMIN_COURSE_PANEL);
         } else if (e.getSource() == enrollStudentButton) {
+            mainApp.getAdminEnrollmentPanel().loadData();
             mainApp.showPanel(App.ADMIN_ENROLLMENT_PANEL);
         } else if (e.getSource() == userPasswordResetButton) {
             // Z.108 braucht man, damit ein Admin nicht sein eigenes Passwort zurücksetzen kann, ohne sein altes zu kennen.
