@@ -25,13 +25,11 @@ public class TeacherCoursePanel extends CommonJPanel implements ActionListener {
     private GradeCalc gradeCalc;
 
     private String currentCourseId;
-    private User student;
     private User teacher;
 
     private JPanel contentPanel;
     private JButton backButton;
     private JButton editWeightsButton;
-    private JButton studentButton;
 
     /**
      * Konstruktor fuer das TeacherCoursePanel.
@@ -145,15 +143,19 @@ public class TeacherCoursePanel extends CommonJPanel implements ActionListener {
         } else {
             // Alle Einschreibungen in den Kurs durchgehen
             for (Enrollment enrollment : enrollments) {
-                student = userDataAccess.findUserById(enrollment.getStudentId());
+                User student = userDataAccess.findUserById(enrollment.getStudentId());
                 if (student != null) {
                     // Für jeden Schüler einen Button für das GradingPanel
-                    studentButton = new JButton(student.getFirstName() + " " + student.getLastName());
+                    JButton studentButton = new JButton(student.getFirstName() + " " + student.getLastName());
                     studentButton.setAlignmentX(Component.CENTER_ALIGNMENT);
                     studentButton.setMaximumSize(new Dimension(300, 40));
                     studentButton.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 
-                    studentButton.addActionListener(this);
+                    studentButton.addActionListener(e ->
+                                                    {
+                                                        mainApp.getTeacherGradingPanel().loadGradingData(currentCourseId, student, this.teacher);
+                                                        mainApp.showPanel(App.TEACHER_GRADING_PANEL);
+                                                    });
 
                     contentPanel.add(studentButton);
                     contentPanel.add(Box.createVerticalStrut(10));
@@ -233,9 +235,6 @@ public class TeacherCoursePanel extends CommonJPanel implements ActionListener {
             mainApp.showPanel(App.TEACHER_DASHBOARD_PANEL);
         } else if (e.getSource() == editWeightsButton) {
             showEditWeightDialog(currentCourseId);
-        } else if (e.getSource() == studentButton) {
-            mainApp.getTeacherGradingPanel().loadGradingData(currentCourseId, student, this.teacher);
-            mainApp.showPanel(App.TEACHER_GRADING_PANEL);
         }
     }
 
