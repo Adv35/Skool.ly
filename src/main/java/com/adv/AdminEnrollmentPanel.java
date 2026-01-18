@@ -159,7 +159,7 @@ public class AdminEnrollmentPanel extends CommonJPanel implements ActionListener
     /**
      * Die ComboBoxen werden aktualisiert (wichtig, falls z.B. in der Zwischenzeit ein neuer Lehrer/Schueler erstellt wurde)
      * **/
-    private void loadData() {
+    public void loadData() {
         // Alle Schüler in die ComboBox
         studentComboBox.removeAllItems();
         ArrayList<User> students = userDataAccess.findUsersByRole("student");
